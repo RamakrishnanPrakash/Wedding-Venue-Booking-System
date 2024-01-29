@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalyana Mandapam Book Mandapam</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/log-msg.css">
+</head>
+
+<body>
+{{#if alert}}
+<div class="msg-container {{alert}}">
+    <p id="xa"><i class="fa-solid fa-xmark"></i></p>
+ <div class="msg-parent">
+    <div class="msg">
+        <img src="../images/tic1.gif" alt="">
+        <h6>{{msg1}}</h6>
+    </div>
+ </div>
+</div>
+{{/if}}
+
+    <!---Navbar creation------>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏰 VENUE MAHAL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav  mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#service">SERVICE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">PRICING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <a href="/login"> <button class="btn btn-outline-primary" type="button">LOGIN</button></a>
+                   <a href="/register"> <button class="btn btn-outline-success" type="button">REGISTRATION</button></a>
+                   
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--Home section----->
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <form action="/auth/distic" class="text-center" id="search" method="get">
+                        <h4>FIND A <span>MARRIAGE HALL</span> IN TAMILNADU</h4>
+                        <label for="dist">Distic</label><br>
+                        <input type="text" placeholder="Enter in your distic" id="" list="disticlist" name="distic">
+                        <!--Here distic list creation----->
+                        <datalist id="disticlist">
+                            <option value="Thanjavur">Thanjavur</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Thirichy">Thirichy</option>
+                            <option value="Thiruvarur">Thiruvarur</option>
+                            <option value="Nagapattinam">Nagapattinam</option>
+                            <option value="Deni">Deni</option>
+                        </datalist>
+
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                      {{#if msg}}  <p id="error">{{msg}}</p> {{/if}}
+                    </form>
+                  
+                </div>
+                <div class="col-sm-4">
+                    <img src="../images/home-img2.png" alt="" class="img-fluid mt-5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Service Section-->
+
+    <section id="service">
+        <div class="service-title">
+            <h4>SERVICE</h4>
+            <p>Venuemahal providing you free services for Mandapam Booking online in all over India and specially in
+                Tamil Nadu like contact details, booked dates, Mahal view and Locatoin. Find here best Function Halls,
+                Banquet Halls, Marriage Halls, Bookmandapam, wedding hall</p>
+        </div>
+            <div class="row rp">
+                <div class="col-md-3 card-parent-1">
+                    <div class="card-container card-11" id="card-11">
+                        <img src="../images/Liveliness.png" class="img-fluid">
+                        <h4>SEARCH MAHAL</h4>
+                        <p>VenueMahal.com provides marriage hall details for all over India and search details like
+                            district, Mahal name, Phone number and much more.
+
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-3 card-parent-2">
+                    <div class="card-container card-2" id="card-2">
+                        <img src="../images/online.png" class="img-fluid">
+                        <h4>ONLINE PAYMENT</h4>
+                        <p>VenueMahal.com provides a flexibility of various on-line payments of master cards, visa
+                            cards,Credit Cards, Net-banking and Paytm wallets.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-3 card-parent-3">
+                    <div class="card-container card-3" id="card-3">
+                        <img src="../images/booking1.png" class="img-fluid">
+                        <h4>LIVE BOOKING</h4>
+                        <p>VenueMahal.com only provides mahal details like phone number, address and landmark, We are
+                            provided availability of mahal details also.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 card-parent-4 ">
+                    <div class="card-container card-4" id="card-4">
+                        <img src="../images/mobile.png" class="img-fluid">
+                        <h4>MOBILE APPS</h4>
+                        <p>VenueMahal app is available on android playstore, Download and search mahal details over
+                            mobile application.</p>
+
+                    </div>
+                </div>
+            </div>
+        
+
+    </section>
+
+    <!--About section-->
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 about-container">
+                    <h1>MARRIAGE HALL SEARCH ENGINE</h1>
+                    <p>Book Mandapam / Marriage Hall book online with www.bookMahal.com, which is free service
+                        provider for Booking marriage, party, birthday celebration hall booking.</p>
+
+                    <div class="question">
+
+                        <div class="list-parent">
+                            <a href=""><span class="quest">01 </span> what we provide free of cost?</a>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div class="list">
+                            <p> 1. Search District wise mahal or Mandapam</p>
+                            <p> 2. Get address and contact details</p>
+                            <p> 3. Identify Already Booked dates </p>
+                            <p> 4. Reserve online and pay online</p>
+                            <p> 5. Get Map view and Direction</p>
+                        </div>
+
+                    </div>
+
+                    <div class="question">
+
+                        <div class="list-parent">
+                            <a href=""><span class="quest">02 </span> why we are the best?</a>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div class="list">
+                            <p> It's the place to be when you are search mahal or mandapam
+                                around you, looking for book/reserve or just want to have a contact details or booked
+                                dates</p>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="../images/hero-img.gif" class="img-fluid  about-img ml-5">
+                    <div class="question">
+
+                        <div class="list-parent">
+                            <a href=""><span class="quest">03 </span>Free to register mahal owner?</a>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div class="list">
+                            <p> yes, it is completely free for mahal owner register
+                                and list down mahal in district level and can get free cost of enquired user details</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!--row-->
+
+
+
+        </div><!--container-->
+
+        <div class="phonecard">
+            <div class="container">
+                <div class="phonecard-container">
+                    <div class="phonecard-title">
+                        <h1>CALL TO ACTION</h1>
+                        <p>E-mail and call support 8X6 means 6 days a week for 8 hours, you can contact us for booking,
+                            enquiry, check available date with price and much more!</p>
+                    </div>
+                    <div class="phone">
+                        <button id="phone"><i class="fa fa-phone"></i>&nbsp; 6380185040</button>
+
+                    </div>
+                </div>
+    </section>
+
+    <!--Prising Section-->
+    <section id="pricing">
+        <div class="service-title">
+            <h4>PRICING</h4>
+            <p>Venuemahal.com provide a free service for customer who are all search marriage hall in Tamil Nadu
+                .it is completely free provider for details of mahal information like phone number, address, Mahal image
+                and landmark, We are provided availability of mahal
+                details as well in live</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h5>FREE PLAN</h5>
+                        <h1><i class="fa-solid fa-indian-rupee-sign"></i>0</h1>
+                        <h6>PER MONTH</h6>
+                        <p><i class="fa-solid fa-check"></i>&nbsp; Per day limited mahal free details</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;Free to add mahal post verification</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp; On-line Live Price</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;On-line Live Booking</p>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h5>CUSTOMER PLAN</h5>
+                        <h1><i class="fa-solid fa-indian-rupee-sign"></i>50</h1>
+                        <h6>PER MONTH</h6>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;No limit in mahal view</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;Free to add mahal immediately</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;On-line Live Booking</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;On-line Live Price</p>
+                    
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h5>OWNER / AGENT PLAN</h5>
+                        <h1><i class="fa-solid fa-indian-rupee-sign"></i>60</h1>
+                        <h6>PER MONTH</h6>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;Free to Add/Modify mahal info online</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;Live booking information shared</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;Live Mahal management App</p>
+                        <p><i class="fa-solid fa-check"></i>&nbsp;More query and share direct contacts
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--faq Section-->
+    <section id="faq">
+        <div class="service-title mt-1">
+            <h4>FREQUENTLY ASKED QUESTION</h4>
+            <p>Venuemahal.com provide a free service for customer who are all search marriage hall in Tamil Nadu and
+                India.it is completely free provider for details of mahal information like phone number, address, Mahal
+                image and landmark, We are provided availability of mahal details as well in live</p>
+        </div>
+
+        <div class="question1-card ">
+            <div class="card-1">
+                <p><i class="fa-solid fa-question"></i>&nbsp; What kind of information available to customer in
+                    Venuemahal.com</p>
+                <i class="fa-solid fa-arrow-down" id="arrow1"></i>
+            </div>
+            <div class="qlist" id="list1">
+                <p>Based on customer location selection, List of mahal information will be provided like mahal contact
+                    details,
+                    Booked date, Mahal image view, map view and much more.</p>
+            </div>
+
+        </div>
+
+        <div class="question1-card ">
+            <div class="card-1">
+                <p><i class="fa-solid fa-question"></i>&nbsp; How do I search and book mahal?</p>
+                <i class="fa-solid fa-arrow-down" id="arrow2"></i>
+            </div>
+            <div class="qlist" id="list2">
+                <p>By selection specific location you can create free account and can be search n number of mahal
+                    around you and limited mahal information can be checked on-line itself</p>
+            </div>
+
+        </div>
+
+        <div class="question1-card ">
+            <div class="card-1">
+                <p><i class="fa-solid fa-question"></i>&nbsp; How to change free account to Customer plan ?</p>
+                <i class="fa-solid fa-arrow-down" id="arrow3"></i>
+            </div>
+            <div class="qlist" id="list3">
+                <p>By paying yearly subscription free account is converted into customer plan account which has
+                    unlimited view option and
+                    fast on-line booking, Subscription charge can paid into on-line</p>
+            </div>
+
+        </div>
+
+        <div class="question1-card ">
+            <div class="card-1">
+                <p><i class="fa-solid fa-question"></i>&nbsp; Booking A Mandapam In Bookmahal.com?</p>
+                <i class="fa-solid fa-arrow-down" id="arrow4"></i>
+            </div>
+            <div class="qlist" id="list4">
+                <p>Before booking need to verify information with us like official email from Venuemahal.com or
+                    confirmation message from us 6380185040 don't trust other source and should not pay any money.</p>
+            </div>
+
+        </div>
+
+
+        <div class="question1-card ">
+            <div class="card-1">
+                <p><i class="fa-solid fa-question"></i>&nbsp; How to change free account to Mahal Owner plan?</p>
+                <i class="fa-solid fa-arrow-down" id="arrow5"></i>
+            </div>
+            <div class="qlist" id="list5">
+                <p>Only for Mahal owner can opt this, by paying subscription charge will get an fast update with more
+                    number of enquiry who visited your mahal and how frequently. Free account only you can update
+                    already booked dates in off-line.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--Contact Section-->
+
+    <section id="contact">
+        <div class="service-title">
+            <h4>CONTACT</h4>
+            <p>Venuemahal.com respect your thoughts and opinion will help us to solve your problem and enrich our
+                professional and growth, Hence always you can contact us below ways</p>
+        </div>
+        <div class="container" id="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact">
+                        <div class="contact-parent">
+                            <div class="contact-child">
+                                <div class="location-logo"><i class="fa-solid fa-location-pin-lock"
+                                        id="location-logo"></i>
+                                </div>
+                                <div class="location-details">
+                                    <h6>LOCATION:</h6>
+                                    <p>234,Karandhai Road</p>
+                                    <p>Near Thanjai BigTemple,Thanjavur 616616</p>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="contact-child">
+                                <div class="location-logo"><i class="fa-solid fa-envelope" id="location-logo"></i></i>
+                                </div>
+                                <div class="location-details">
+                                    <h6>EMAIL:</h6>
+                                    <p>www.ramkrish98@gmail.com</p>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="contact-child">
+                                <div class="location-logo"><i class="fa-solid fa-phone-volume" id="location-logo"></i>
+                                </div>
+                                <div class="location-details">
+                                    <h6>CALL:</h6>
+                                    <p>+91 9345147960</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-8">
+                    <div class="container ">
+                        <form action="" class="details-1">
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                    name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pwd" class="form-label">Password:</label>
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                    name="pswd">
+                            </div>
+
+                            <label for="comment">Comments:</label>
+                            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--Footer Section-->
+
+<footer id="footer">
+    <div class="container text-center">
+        <h4>JOIN OUR NEWSLETTER</h4> 
+        <p>Get our updates, feature and much more on your inbox</p>
+        <input type="text"> <span>
+        <button>Subscribe</button></span>
+    </div>
+
+    <div class="container foot-content">
+        <div class="row">
+            <div class="col-md-3 p-2">
+              <h4>VENUE MAHAL</h4>
+              <p>
+                234,Karandhai Road
+                Near Thanjai BigTemple,Thanjavur 616616
+                </p>
+                <p>Phone:+91 6380185040</p>
+                <p>Email:venuemahal635@gmail.com</p>
+            </div>
+
+
+
+
+
+            <div class="col-md-3 mt-5 p-2">
+              <h5>USEFUL LINKS</h5>
+               <p>  &nbsp;HOME    </p>
+              <p>  &nbsp;SERVICE</p>
+              <p>  &nbsp;ABOUT</p>
+              <p>  &nbsp;PRICING</p>
+            </div>
+            <div class="col-md-3 mt-5 p-2">
+               <h5>FAST MOVING ZONE</h5>
+               <p>Marriage hall in Bangalore</p>
+               <p>   Marriage hall in kerala</p>
+               <p>  Marriage hall in Visa</p>
+            </div>
+            <div class="col-md-3 mt-5 p-2">
+              <h5>OUR SOCIAL NETWORKS</h5>
+              <p>watch out us on social media and if you wish support us!</p>
+              <div class="social-icon">
+                <i class="fa-brands fa-twitter" id="social-icon"></i>
+                <i class="fa-brands fa-facebook" id="social-icon"></i>
+                <i class="fa-brands fa-square-instagram" id="social-icon"></i>
+                <i class="fa-brands fa-whatsapp" id="social-icon"></i>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy-right">
+        <div class="container">
+            <h5 style="color: whitesmoke;">2023 - 2025 ALL RIGHTS RESERVED BY VENUEMAHAL.COM</h5>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

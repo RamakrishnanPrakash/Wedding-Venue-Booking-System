@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalyana Mandapam / Book Mandapam</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/register.css" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">🏰 VENUEMAHAL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item" href="#">HOME <span class="sr-only">(current)</span></a>
+            <a class="nav-item" href="#">SERVICE</a>
+            <a class="nav-item" href="#about">ABOUT</a>
+            <a class="nav-item" href="#pricing">PRICING</a>
+            <a class="nav-item" href="#faq">FAQ</a>
+            <a class="nav-item" href="#contact">CONTACT</a>
+          </div>
+        </div>
+       <a href="/login" id="log">Login</a>
+      </nav>
+  </nav>
+
+  <section id="login-page">
+<div class="container p-5">
+  <div class="row">
+  <div class="col-md-6 col-lg-6 col" style="color: white;">
+    <div class="content">
+    <h5>WELCOME TO</h5>
+    <h1>VENUEMAHAL  <span> .com</span></h1>
+    <p>Venuemahal providing you free services for Mandapam Booking online in all over India and specially in Tamil Nadu like contact details, booked dates, Mahal view and Locatoin. Find here best Function Halls,
+       Banquet Halls, Marriage Halls, Bookmandapam, wedding hall.</p>
+       <div class="icons">
+        <i class="fa-brands fa-instagram" id="insta"></i>
+        <i class="fa-brands fa-facebook" id="facebook"></i>
+        <i class="fa-brands fa-whatsapp" id="whatsapp"></i>
+        <i class="fa-brands fa-twitter" id="twitter"></i>
+      </div>
+      </div>
+     
+  </div>
+
+
+
+  <div class="col-md-6 col-lg-6 col">
+    <div class="Box">
+      <div class="box">
+
+        <h1 style="color: yellow; border-bottom: 3px solid crimson; border-top: 3px solid crimson;">♗  REGISTER  ♚</h1>
+     <form action="/auth/register" method="post">
+        <div class="input-box">
+          <label for="username">USERNAME</label>
+          <div class="input"><i class="fa-solid fa-user" id="log-icons"></i> <input type="text" name="username"></div>
+        </div>
+        <div class="error">
+          {{#if msg1}}
+          <p> {{msg1}}</p>
+          {{/if}}
+          </div>
+
+        <div class="input-box">
+          <label for="username">EMAIL</label>
+          <div class="input"><i class="fa-solid fa-envelope"id="log-icons"></i><input type="email" name="email"></div>
+        </div>
+          <div class="error">
+          {{#if msg2}}
+          <p> {{msg2}}</p>
+          {{/if}}
+          </div>
+
+        <div class="input-box">
+          <label for="username">PASSWORD</label>
+          <div class="input"><i class="fa-solid fa-lock" id="log-icons"></i><input type="password" name="password" id="password1"><i class="fa-solid fa-eye-slash" id="eye1"></i></div>
+        </div>
+        <div class="error">
+          {{#if msg3}}
+          <p>{{msg3}}</p>
+          {{/if}}
+          </div>
+
+        <div class="input-box">
+          <label for="username">CONFIRM PASSWORD</label>
+          <div class="input"><i class="fa-solid fa-key" id="log-icons"></i><input type="password" name="cpassword" id="password2"><i class="fa-solid fa-eye-slash" id="eye2"></i></div>
+        </div>
+        <div class="error"><p></p> </div>
+         
+        <p id="check"><input type="checkbox" id="checkbox"> Already have and account?</p>
+       <button type="submit" id="submit">Register</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>
+</div>
+   
+
+
+  </section>
+
+  <script src="../js/password.js"></script>
+</body>
+</html>
