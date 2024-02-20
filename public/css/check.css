@@ -7,6 +7,10 @@
     box-sizing: border-box;
     list-style: none;
 }
+#error3{
+    margin: 5px 0;
+    color: red;
+}
 /*------------------------------------------------------------------------------------------------------------------*/
 /*------Navabar-------*/
 #navbar {
@@ -633,4 +637,171 @@ footer{
         transform: translateY(-10px);
         opacity: .8;
     }
+}
+/* otp- template design */
+body{
+   
+    position: relative;
+}
+#close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+.otp-parent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(200,79,202,1) 50%, rgba(233,73,159,1) 100%); */
+   /* background-color: #000; */
+   /* background: rgb(34,193,195);
+ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(47,184,198,1) 1%, rgba(253,45,241,1) 100%); */
+ /* background: rgb(47,184,198);
+background: linear-gradient(0deg, rgba(47,184,198,1) 25%, rgba(67,170,202,1) 25%, rgba(253,45,241,1) 50%); */
+background: rgb(67,170,202);
+background: linear-gradient(0deg, rgba(67,170,202,1) 18%, rgba(253,45,241,1) 100%);
+position:fixed;
+  left: 0;
+  z-index: 121;
+    top: -300vh;
+
+}
+.otp-active{
+    top: 0;
+}
+.otp-container{
+    position: relative;
+    width: 400px;
+    background: rgba(0,0,0,.5);
+    border-radius: 10px;
+ 
+}
+.mobile{
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+.mobile h2{
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 28px;
+    margin: 10px 0;
+    text-shadow: 2px 2px 2px #fff;
+}
+.mobile p{
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+  
+}
+.mobile img{
+ width: 200px;
+ height: 200px;
+} 
+.otp-input{
+    width: 100%;
+    height: 200px;
+    background-color: #ffffffc5;
+}
+.input-form{
+    width: 100%;
+    height: auto;;
+}
+
+.input-container{
+    text-align: center;
+}
+
+.input-container input{
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 27px;
+    outline: none;
+    cursor:pointer;
+    border: 0;
+    border-radius: 10px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 2px #000;
+}
+.input-container input:hover{
+    background-color: #ffffffa3;
+}
+.input-container p{
+    margin: 10px 0;
+    font-weight: 800;
+    color: #000;
+}
+#resend{
+    color: #1399d8;
+    letter-spacing: 1px;
+}
+.input-container button{
+    margin: 10px 0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 30px;
+    color: #fff;
+    background-color: #1399d8;
+    font-weight: 900;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+
+}
+/* This css was using warning card */
+.warning-card{
+    width: 100%;
+    height: 100vh;    
+    position:fixed;
+    left: 0;
+    z-index: 121;
+    top: -100vh;
+    background-color: #794469d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.warning-container{
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    padding: 1rem;
+    text-align: center;
+
+}
+.fa-circle-exclamation{
+    color: red;
+    font-size: 20px;
+}
+.warning-container span{
+    font-size: 20px;
+    color: red;
+    font-weight: 700;
+}
+.warning-container li{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.warning-container a{
+    color: #1399d8;
+    font-size: 20px;
+    font-weight: 500;
+}
+.warning-active{
+    top: 0;
 }

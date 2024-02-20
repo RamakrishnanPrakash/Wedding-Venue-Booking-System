@@ -2,7 +2,6 @@ const express=require('express');
 const userController=require("../Controller/user");
 
 const router=express.Router();
-
 router.get(['/','/home'],(req,res)=>{
         res.render('index'); 
 });
@@ -24,4 +23,8 @@ router.get('/login',(req,res)=>{
 router.get('/register',(req,res)=>{
     res.render('register')
 })
+router.get('/confirm',(req,res)=>{
+    res.render('confirm');
+})
+ 
 module.exports=router;

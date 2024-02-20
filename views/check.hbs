@@ -8,7 +8,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/check.css" rel="stylesheet">
 </head>
-<body>
+<body class="body">
+  
+    <div class="warning-card {{#if alerts}} {{alerts}} {{/if}}">
+        <div class="warning-container">
+            <i class="fa-solid fa-circle-exclamation"></i> 
+            <span> Sorry!!!Already this mahal has been booked on that date</span>
+           <ul><li style="list-style: disc;"> <p>Please, try with some other mahal.</p></li></ul>
+            <a href="/auth/back">Go Back</a>
+        </div>
+    </div>
+    
+    <div class="otp-parent {{#if active}} {{active}}   {{/if}}">
+
+        
+        <div class="otp-container">
+            <p id="close"><i class="fa-solid fa-xmark"></i></p>
+            <div class="mobile">
+                <img src="../images/mobile2.png" alt="">
+                <h2>OTP VERIFICATION</h2>
+                <p>code has been send to</p>
+                <p>*****@gmail.com</p>
+                 {{#if msg}} <p id="error3">{{msg}}</p> {{/if}}
+            </div>
+            <div class="otp-input">
+             <div class="input-container">
+                <form action="/auth/validOtp" class="input-form" method="post">
+                <input type="text" class="input-box" id="input-box" name="no1">
+                <input type="text" class="input-box" id="input-box" name="no2">
+                <input type="text" class="input-box" id="input-box" name="no3">
+                <input type="text" class="input-box" id="input-box" name="no4">
+                
+                <button type="submit">Verfiy</button>
+                </form>
+                <p>didn't get otp <a href="/auth/otp" id="resend">Resend otp</a></p>
+             </div>
+             </div>
+        </div>
+        
+    </div>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="#">🏰VENUE MAHAL</a>
@@ -38,7 +77,7 @@
                 </ul>
             </div>
             <div class="logo">
-            <p id="Symbol">R</p>
+            {{#if logoname}} <p id="Symbol"> {{logoname}} </p> {{/if}}
         </div>
         <a class="nav-link search"> <button id="filter-btn"><i class="fa-solid fa-filter" id="filter-icon"></i></button></a>
         <a class="nav-link" href="/auth/logout">Logout</a>
@@ -231,7 +270,7 @@
                  <div class="mahal-name">
                     <h6>{{mahalname}}</h6><span><i class="fa-solid fa-star"></i><a style="font-size: 13px; margin-left: 2px;">{{rating}}</a></span>
                  </div>
-                 <a>West Mambalam,Chennai</a>
+                 <a>{{city}} , {{distic}}</a><br>
                  <a> <i class="fa-solid fa-indian-rupee-sign"></i> {{budjet}} <span style="font-size: 13px; margin-left: 2px;">per day</span></a>
                  <div class="info"><a style="opacity: .8;">Indoor • {{indoor}} people</a> <a href="/auth/info?id={{id}}" id="info">More Info</a></div>
                  

@@ -7,7 +7,12 @@ const {promisify}=require('util');
 const { log, error } = require('console');
 env.config({path:'../.env'});
 
+const Mailer=require('./mailer');
+var nameLogo;
+var otp;
 var logoname;//not change the variable name
+var userData=[];
+let bookingData=[];
 
 //DATABASE CONNECTION AND CONFIGURATION
 const connection=mysql.createConnection(
@@ -19,14 +24,16 @@ const connection=mysql.createConnection(
     }
 );
 connection.connect((error)=>{
-    if(error)
+    if(error){
       console.log(error);
+   }
     else if(!error)
        console.log("Database was connected");
 })
 
 //Here the router loading the venue card from venue_search.hbs
 exports.distic=(req,res)=>{
+   try{
    if(!req.cookies.account){
       res.render('login');
    }
@@ -42,6 +49,11 @@ exports.distic=(req,res)=>{
         if(result.length!=0)
         res.render('venue_search',{result:result,distic,logoname});
     })
+   }catch(error)
+   {
+      console.log(error);
+      res.render('404');
+   }
 
 }
 
@@ -104,7 +116,7 @@ exports.info=(req,res)=>{
       //console.log(result);
       connection.query("SELECT * FROM MAHAL",(error1,result1)=>{
          if( error1) throw error1
-         res.render('check.hbs',{result:result,result1:result1});
+         res.render('check.hbs',{result:result,result1:result1,logoname:logoname});
       })
      
    }
@@ -274,11 +286,13 @@ exports.logout=(req,res)=>{
    /******************************************************** 
    **************Mahal Booking codes************************
    *********************************************************  */ 
-
-exports.bookingMahal=async(req,res)=>{
+   var id=''
+exports.bookingMahal=async(req,res,next)=>{
+   let decode=''
    var username;
    var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const {mahal_id}=req.query; 
+    id=req.query.mahal_id;
     const {name,phone_no,email,date} =req.body;
     console.log(name,phone_no,email,date)
 
@@ -290,7 +304,7 @@ exports.bookingMahal=async(req,res)=>{
          for(var j=0;j<phoneArray.length;j++){
              if(phone_no[i]===phoneArray[j]){
                state=true;
-               console.log(phone_no[i]);
+               //console.log(phone_no[i]);
                break;
              }
              else{
@@ -301,7 +315,7 @@ exports.bookingMahal=async(req,res)=>{
       }
       
     if(req.cookies.account){
-        const decode=await promisify(jwt.verify)(
+          decode=await promisify(jwt.verify)(
           req.cookies.account,
           process.env.JWT_SECRET
         );
@@ -344,6 +358,44 @@ exports.bookingMahal=async(req,res)=>{
                      else if(!email.match(validEmailRegex)){
                       
                        return res.render('check.hbs',{result:result,message1:"Invalid email address! 📱",result1:result1});
+                     }
+
+                     else if(date){
+                        connection.query(`
+                          SELECT * FROM BOOKING WHERE MAHAL_ID=? AND BOOKING_DATE=?
+                        `,[mahal_id,date],(err,result1)=>{
+                           if(result1.length>0){
+                              //console.log(result.length);
+                              return res.render('check.hbs',{result:result,result1:result1,alerts:"warning-active"}); 
+                           }
+
+                           else{
+                              userData=[{
+                                 mahalId:mahal_id,
+                                 userId:decode.id,
+                                 userName:name,
+                                 email:email,
+                                 phoneNo:phone_no,
+                                 date:date
+                              }]
+                              // console.log(userData);
+                              otp=Mailer.mail(userData[0].userName,userData[0].email);
+                              console.log(otp);
+                              // return res.render('check.hbs',{result:result,result1:result1 ,active:"otp-active"});
+                              res.render('otp.hbs');
+                              
+                              // connection.query('INSERT INTO BOOKING VALUES(?,?,?,?,?)',[parseInt(mahal_id),date,decode.id,email,phone_no],
+                              // (error,result1)=>{
+                              //    if(error) 
+                              //      console.log(error);
+                              //    else
+                              //      console.log("DATA WAS INSERTED");
+                              // }
+                              // )
+                           }
+                         
+                        });
+                        
                      }
 
                      else{
@@ -399,16 +451,72 @@ exports.bookingMahal=async(req,res)=>{
       }
 
       }
-      );
-
-
-
-
-
-
-
-
-
-
+        )
       }
    }
+   exports.back=(req,res)=>{
+       res.redirect(`/auth/info?id=${id}`); 
+      
+   }
+
+ /***********************************************************************************************************
+  **************************This section otp verification************************************************* 
+  *********************************************************************************************************/
+
+exports.resendOtp=(req,res)=>{
+try{
+  otp=Mailer.mail(userData[0].userName,userData[0].email);
+  console.log(otp);
+  res.render('otp');
+}
+catch(error){
+ console.error("Error:",error);
+}
+  }
+
+exports.validOtp=(req,res)=>{
+  try{
+   var d;
+   var data;
+   const bookingData=[];
+   var mahalIdArray=[];
+   var object1=new Object();
+   const{no1,no2,no3,no4}=req.body;
+ 
+   var num=no1+no2+no3+no4;
+    console.log(num);
+    
+   if(!num||otp!==num){
+     res.render("otp",{msg:"Invalid OTP"})
+   }
+   else if(otp==num){
+     // console.log(userData);
+     connection.query(`INSERT INTO BOOKING VALUES(?,?,?,?,?,?)`,
+    [userData[0].mahalId,userData[0].date,userData[0].userId,userData[0].email,userData[0].phoneNo,userData[0].userName],
+    (error,result)=>{
+      if(error){
+         console.error("Error:"+error);
+      }
+      }
+     )
+    
+     connection.query(`
+     SELECT MAHAL.mahalname,MAHAL.distic,MAHAL.city,MAHAL.mahalimage,
+     BOOKING.BOOKING_DATE,BOOKING.EMAIL,BOOKING.PHONE_NO,BOOKING.USERNAME FROM MAHAL,BOOKING
+     WHERE MAHAL.id=BOOKING.MAHAL_ID AND BOOKING.USER_ID=?
+     `,[userData[0].userId],(error,result)=>{
+    //  console.log('----------------------------------------------------------------------------------')
+      console.log(result);
+      console.log("Username is:",userData[0].userName);
+      var mes=''+userData[0].userName;
+      res.render('confirm',{result:result ,mes:mes});
+     })
+
+   }//else-if block
+   
+   }//try-block
+   catch(error){
+      console.log(error);
+      res.render('404');
+   }
+}

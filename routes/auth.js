@@ -9,6 +9,7 @@ router.post('/register',userController.register);
 router.post('/login',userController.login);
 router.get('/logout',userController.logout);
 router.post('/booking',userController.bookingMahal); 
-
-
+router.get('/back',userController.back);
+router.get('/otp',userController.resendOtp);
+router.post('/validOtp',userController.validOtp);
 module.exports=router;

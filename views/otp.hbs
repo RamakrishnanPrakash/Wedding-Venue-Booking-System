@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venuemahal</title>
+    <link rel="stylesheet" href="../css/otp.css">
+</head>
+<body>
+    <div class="otp-parent otp-active">
+
+        
+        <div class="otp-container">
+            <p id="close"><i class="fa-solid fa-xmark"></i></p>
+            <div class="mobile">
+                <img src="../images/mobile2.png" alt="">
+                <h2>OTP VERIFICATION</h2>
+                <p>code has been send to</p>
+                <p>*****@gmail.com</p>
+                {{#if msg}} <p id="error3">{{msg}}</p> {{/if}}
+            </div>
+            <div class="otp-input">
+             <div class="input-container">
+                <form action="/auth/validOtp" class="input-form" method="post">
+               
+                <input type="text" class="input-box" id="input-box" name="no1">
+                <input type="text" class="input-box" id="input-box" name="no2">
+                <input type="text" class="input-box" id="input-box" name="no3">
+                <input type="text" class="input-box" id="input-box" name="no4">
+                
+                <button type="submit">Verfiy</button>
+                </form>
+                 
+                <p>didn't get otp <a href="/auth/otp" id="resend">Resend otp</a></p>
+             </div>
+             </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
