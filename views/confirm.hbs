@@ -9,6 +9,33 @@
     <link rel="stylesheet" href="../css/confirm.css">
 </head>
 <body>
+
+    <!--This block of code display the confirm message-->
+
+     {{#if result}}
+        <div class="confirm-message" id="msg">
+
+            
+                <div class="msg-container">
+
+                  <div class="img-msg">
+                    <img src="../images/tic2.png" alt="">
+                  </div>
+                  <div class="data">
+                    <h1>Awesome!</h1>
+                    <p>Your booking has been confirmed.Check your email for details.</p>
+               
+                    <button onclick="disappearMsg()">OK</button>
+                  </div>
+                </div>
+            
+        </div>
+        <script>
+            function disappearMsg(){
+                document.getElementById('msg').style.display="none";
+            }
+        </script>
+    {{/if}}
    <!---Navbar creation------>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container">
@@ -21,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">HOME</a>
+                        <a class="nav-link" href="/">HOME</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#home"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -36,7 +63,7 @@
   <section id="profile">
      <h2>Booking Details</h2 >
      <div class="container">
-  <div class="container profile-container mt-4 ">
+  <div class="container profile-container mt-4 p-2">
    {{#each result}}
       <div class="row profile">
         <div class="col-md-4 image">

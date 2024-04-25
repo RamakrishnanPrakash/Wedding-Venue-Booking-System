@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,94 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/venue_search.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/addCard.css">
 </head>
+
 <body>
+    {{!-- {{> addCard }} addCard.css--}}
+    <div class="addcontainer">
+        <div class="add-container">
+            <div class="main">
+                <div class="title">
+                    <h3>🏰Venuemahal.com</h3>
+                </div>
+                <div class="logo">
+                    <ul>
+                        <li><i class="fa-solid fa-bag-shopping"></i> My Card</li>
+                        <li><i class="fa-regular fa-heart"></i></li>
+                        <li><i class="fa-regular fa-user"></i></li>
+                        <li id="x-mark"><i class="fa-brands fa-x-twitter"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="scroll-bar" id="parent">
+                                {{!-- <div class="contents">
+                                    <table>
+                                        <tr>
+                                            <td><img src="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/997/573/new_medium/ss20230607-13853-4eas9z.jpg?1686168639"
+                                                    alt="no" width="100px" height="100px"></td>
+                                            <td id="par">
+                                                <h6>Kalyana mandapa name</h6>
+                                                <p>district</p>
+                                                <p>addess</p>
+                                                <p>8999-72903 people</p>
+                                            </td>
+                                            <td>
+                                                <h6>Booking Date</h6>
+                                                <p>2024-03-13</p>
+                                            </td>
+                                            <td>
+                                                <h6>Amount</h6>
+                                                <p>Rs.10000</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div> --}}
+
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card-container text-center" id="card-container">
+
+                                {{!-- <div class="image-card">
+                                    <img src="../images/taj_palace_delhi.avif" alt="">
+                                </div>
+                                <div class="card-details text-start">
+                                    <h6>Thiruna mandapama</h6>
+                                    <p>city</p>
+                                    <p>District</p>
+                                    <p>Amount: Rs.4000</p>
+                                    <button id="btn1">Pay</button>
+                                    <button id="btn2">Delete</button>
+                                </div> --}}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">🏰VENUE MAHAL</a>
+            <a class="navbar-brand" href="#">🏰Venuemahal.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -21,166 +105,222 @@
                 <ul class="navbar-nav  mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/">HOME</a>
-                       
+
                     </li>
-                    <li  class="nav-item"></li>
+                    <li class="nav-item"></li>
                     <li class="nav-item">
                         <form action="/auth/distic" class="search">
-                            <input type="text" id="search" placeholder="Enter your district" list="disticlist" name="distic"> <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                              <datalist id="disticlist" style="height: 100px; width:500px">
-                            <option value="Thanjavur">Thanjavur</option>
-                            <option value="Chennai">Chennai</option>
-                            <option value="Pudukkottai">Pudhukkottai</option>
-                            <option value="Thirichy">Thirichy</option>
-                            <option value="Thiruvarur">Thiruvarur</option>
-                        </datalist>
+                            <input type="text" id="search" placeholder="Enter your district" list="disticlist"
+                                name="distic"> <button type="submit"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <datalist id="disticlist" style="height: 100px; width:500px">
+                                <option value="Thanjavur">Thanjavur</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Pudukkottai">Pudhukkottai</option>
+                                <option value="Thirichy">Thirichy</option>
+                                <option value="Thiruvarur">Thiruvarur</option>
+                            </datalist>
                         </form>
                     </li>
-                   
+
                 </ul>
             </div>
+
+
             <div class="logo">
-           {{#if logoname}} <p id="Symbol"> {{logoname}} </p> {{/if}}
+                {{#if logoname}}
+                <p id="Symbol">{{logoname}} </p>
+
+
+
+                {{/if}}
+
+                <div class="user-card" id="user-card">
+
+                    {{!-- <div class="user-name">
+                        <h4>Ramakrishnan</h4>
+                        <p id="x-mark2"><i class="fa-solid fa-x"></i></p>
+                    </div>
+
+                    <div class="user-image">
+                        <img src="../images/user.png" alt="">
+                    </div>
+
+                    <div class="user-content">
+                        <p>ram.com</p>
+                        <button>Logout</button>
+                    </div> --}}
+
+                </div>
+
+            </div>
+
+
+
+            <a class="nav-link search"> <button id="filter-btn"><i class="fa-solid fa-filter"
+                        id="filter-icon"></i></button></a>
+            {{#if logoname }}
+            <a class="nav-link" href="/auth/logout">Logout</a>
+            {{else}}
+            <a class="nav-link search" href="/login"> <button class="btn btn-outline-primary" type="button"
+                    style="background: rgb(10, 232, 10);">LOGIN</button></a>
+            <a class="nav-link search" href="/register"> <button class="btn btn-outline-success" type="button"
+                    style="background: rgb(204, 51, 64);">REGISTRATION</button></a>
+            {{/if}}
         </div>
-        
-         <a class="nav-link search"> <button id="filter-btn"><i class="fa-solid fa-filter" id="filter-icon"></i></button></a>
-         <a class="nav-link" href="/auth/logout">Logout</a>
-        </div>
-    </nav> 
+    </nav>
+
+
+
+
 
     <!--Venue_Mahal_Search_Section-->
     <section id="venue_search">
-       
+
         <div class="venue_search">
             <div class="container">
-            <h1>Tamilnadu Largest Wedding Venue Booking
-                Platform with 40000+ venues</h1></div>
+                <h1>Tamilnadu Largest Wedding Venue Booking
+                    Platform with 40000+ venues</h1>
+            </div>
         </div>
-     <!--Filter Section-->
+        <!--Filter Section-->
         <div class="filter">
             <div class="title">
-            <i class="fa-solid fa-xmark" id="x-mark"></i> <a style="color: #eb25a9;">VenueMahal.com</a>
-        </div>
-        <p id="p">VenueMahal provide customer requirements .Enter your requirements below😊😊😊</p>
+                <i class="fa-solid fa-xmark" id="x-mark1"></i> <a style="color: #eb25a9;">VenueMahal.com</a>
+            </div>
+            <p id="p">VenueMahal provide customer requirements .Enter your requirements below😊😊😊</p>
 
-        <div class="filter-details">
-            <form action="/auth/filter" method="get">
-            {{#if msg}}
-             <p>{{msg}}</p>
-            {{/if}}
-            <div class="input">
-                <input type="text" name="amount" placeholder="💰 Enter your budget">
+            <div class="filter-details">
+                <form action="/auth/filter" method="get">
+                    {{#if msg}}
+                    <p>{{msg}}</p>
+                    {{/if}}
+                    <div class="input">
+                        <input type="text" name="amount" placeholder="💰 Enter your budget">
+                    </div>
+                    <div class="input">
+                        <input type="text" name="city" placeholder="🏙️ Enter your distic">
+                    </div>
+                    <div class="input">
+                        <input type="text" name="rating" placeholder="🏙️ Enter a rating 1-5">
+                    </div>
+                    <div class="input">
+                        <p><span style="opacity: .8;">Choose your choice:</span> <input type="radio" name="ac"
+                                value="Ac"> A/c
+                            <input type="radio" name="ac" value="Non-Ac">Non-A/c
+                        </p>
+
+                    </div>
+                    <div class="input">
+                        <button type="submit">Filter <i class="fa-solid fa-filter" id=""></i></button>
+                    </div>
+                </form>
             </div>
-            <div class="input">
-                <input type="text" name="city" placeholder="🏙️ Enter your distic">
-            </div>
-             <div class="input">
-                <input type="text" name="rating" placeholder="🏙️ Enter a rating 1-5">
-            </div>
-            <div class="input">
-                <p><span style="opacity: .8;">Choose your choice:</span> <input type="radio" name="ac" value="Ac"> A/c
-                    <input type="radio" name="ac" value="Non-Ac">Non-A/c</p>
-              
-            </div>
-            <div class="input">
-                <button type="submit">Filter   <i class="fa-solid fa-filter" id=""></i></button>
-            </div>
-        </form>
-        </div>
         </div>
 
-      
-       <!--Venue card creation-->
+
+        <!--Venue card creation-->
         <div class="venue_card">
             <div class="container-fluid">
-               <div class="details">
-                <a>🚀 Best Wedding Venues in {{distic}} 🚀</a>
-                <p>VenueMahal.com is there to help you out with a list of Best Wedding Venues in {{distic}} to match your requirements. Whether you want a grand or an affordable yet beautiful one, we have included different kinds of Wedding Venues in Chennai with Reviews, Menu, Availability, Cost &amp; Excellent services</p>
-               </div>
-            <div class="row">
-
-              {{#each result}}
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="image img-fluid text-center"><img src={{mahalimage}} alt="no"></div>
-                     <div class="mahal-name">
-                        <h6>{{mahalname}}</h6><span><i class="fa-solid fa-star"></i><a style="font-size: 13px; margin-left: 2px;">{{rating}}</a></span>
-                     </div>
-                     <a>{{city}},{{distic}}</a>
-                     <a> <i class="fa-solid fa-indian-rupee-sign"></i> {{budjet}} <span style="font-size: 13px; margin-left: 2px;">per day</span></a>
-                     <div class="info"><a style="opacity: .8;">Indoor • {{indoor}} people</a> <a href="/auth/info?id={{id}}" id="info">More Info</a></div>
-                     
-                    </div>
+                <div class="details">
+                    <a>🚀 Best Wedding Venues in {{distic}} 🚀</a>
+                    <p>VenueMahal.com is there to help you out with a list of Best Wedding Venues in {{distic}} to match
+                        your requirements. Whether you want a grand or an affordable yet beautiful one, we have included
+                        different kinds of Wedding Venues in Chennai with Reviews, Menu, Availability, Cost &amp;
+                        Excellent services</p>
                 </div>
-                {{/each}}
+                <div class="row">
 
+                    {{#each result}}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="image img-fluid text-center"><img src={{mahalimage}} alt="no"></div>
+                            <div class="mahal-name">
+                                <h6>{{mahalname}}</h6><span><i class="fa-solid fa-star"></i><a
+                                        style="font-size: 13px; margin-left: 2px;">{{rating}}</a></span>
+                            </div>
+                            <a>{{city}},{{distic}}</a>
+                            <a> <i class="fa-solid fa-indian-rupee-sign"></i> {{budjet}} <span
+                                    style="font-size: 13px; margin-left: 2px;">per day</span></a>
+                            <div class="info"><a style="opacity: .8;">Indoor • {{indoor}} people</a> <a
+                                    href="/auth/info?id={{id}}" id="info">Book Now</a></div>
+
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
 
     <!--Footer Section-->
 
-<footer id="footer">
-    <div class="container text-center">
-        <h4>JOIN OUR NEWSLETTER</h4> 
-        <p>Get our updates, feature and much more on your inbox</p>
-        <input type="text"> <span>
-        <button>Subscribe</button></span>
-    </div>
+    <footer id="footer">
+        <div class="container text-center">
+            <h4>JOIN OUR NEWSLETTER</h4>
+            <p>Get our updates, feature and much more on your inbox</p>
+            <input type="text"> <span>
+                <button onclick="window.alert(`
+        Thanks for subscribe !!!.
+        Get our updates, feature and much more on your inbox`)">Subscribe</button></span>
+        </div>
 
-    <div class="container foot-content">
-        <div class="row">
-            <div class="col-md-3 p-2">
-              <h4>VENUE MAHAL</h4>
-              <p>
-                234,Karandhai Road
-                Near Thanjai BigTemple,Thanjavur 616616
-                </p>
-                <p>Phone:+91 6380185040</p>
-                <p>Email:venuemahal635@gmail.com</p>
-            </div>
+        <div class="container foot-content">
+            <div class="row">
+                <div class="col-md-3 p-2">
+                    <h4>VENUE MAHAL</h4>
+                    <p>
+                        234,Karandhai Road
+                        Near Thanjai BigTemple,Thanjavur 616616
+                    </p>
+                    <p>Phone:+91 6380185040</p>
+                    <p>Email:venuemahal635@gmail.com</p>
+                </div>
 
 
 
 
 
-            <div class="col-md-3 mt-5 p-2">
-              <h5>USEFUL LINKS</h5>
-               <p>  &nbsp;HOME    </p>
-              <p>  &nbsp;SERVICE</p>
-              <p>  &nbsp;ABOUT</p>
-              <p>  &nbsp;PRICING</p>
-            </div>
-            <div class="col-md-3 mt-5 p-2">
-               <h5>FAST MOVING ZONE</h5>
-               <p>Marriage hall in Bangalore</p>
-               <p>   Marriage hall in kerala</p>
-               <p>  Marriage hall in Visa</p>
-            </div>
-            <div class="col-md-3 mt-5 p-2">
-              <h5>OUR SOCIAL NETWORKS</h5>
-              <p>watch out us on social media and if you wish support us!</p>
-              <div class="social-icon">
-                <i class="fa-brands fa-twitter" id="social-icon"></i>
-                <i class="fa-brands fa-facebook" id="social-icon"></i>
-                <i class="fa-brands fa-square-instagram" id="social-icon"></i>
-                <i class="fa-brands fa-whatsapp" id="social-icon"></i>
-              </div>
+                <div class="col-md-3 mt-5 p-2">
+                    <h5>USEFUL LINKS</h5>
+                    <p> &nbsp;HOME </p>
+                    <p> &nbsp;SERVICE</p>
+                    <p> &nbsp;ABOUT</p>
+                    <p> &nbsp;PRICING</p>
+                </div>
+                <div class="col-md-3 mt-5 p-2">
+                    <h5>FAST MOVING ZONE</h5>
+                    <p>Marriage hall in Bangalore</p>
+                    <p> Marriage hall in kerala</p>
+                    <p> Marriage hall in Visa</p>
+                </div>
+                <div class="col-md-3 mt-5 p-2">
+                    <h5>OUR SOCIAL NETWORKS</h5>
+                    <p>watch out us on social media and if you wish support us!</p>
+                    <div class="social-icon">
+                        <i class="fa-brands fa-twitter" id="social-icon"></i>
+                        <i class="fa-brands fa-facebook" id="social-icon"></i>
+                        <i class="fa-brands fa-square-instagram" id="social-icon"></i>
+                        <i class="fa-brands fa-whatsapp" id="social-icon"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="copy-right">
-        <div class="container">
-            <h5 style="color: whitesmoke;">2023 - 2025 ALL RIGHTS RESERVED BY VENUEMAHAL.COM</h5>
+        <div class="copy-right">
+            <div class="container">
+                <h5 style="color: whitesmoke;">2023 - 2025 ALL RIGHTS RESERVED BY VENUEMAHAL.COM</h5>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 
-  <script src="../js/filtercard.js"></script>
+    <script src="../js/addCard.js"></script>
+    <script src="../js/card.js"></script>
+    <script src="../js/filtercard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

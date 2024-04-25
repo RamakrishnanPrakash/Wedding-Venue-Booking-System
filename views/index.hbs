@@ -12,8 +12,8 @@
 </head>
 
 <body>
-{{#if alert}}
-<div class="msg-container {{alert}}">
+
+<div class="msg-container {{#if alert}} {{alert}} {{/if}}">
     <p id="xa"><i class="fa-solid fa-xmark"></i></p>
  <div class="msg-parent">
     <div class="msg">
@@ -22,7 +22,7 @@
     </div>
  </div>
 </div>
-{{/if}}
+
 
     <!---Navbar creation------>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
@@ -70,18 +70,29 @@
                     <form action="/auth/distic" class="text-center" id="search" method="get">
                         <h4>FIND A <span>MARRIAGE HALL</span> IN TAMILNADU</h4>
                         <label for="dist">Distic</label><br>
-                        <input type="text" placeholder="Enter in your distic" id="" list="disticlist" name="distic">
+                        <div class="input-container">
+                        <input type="text" placeholder="Enter in your distic" id="search-input" list="disticlist" name="distic" autocomplete="off" style="color: black;">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div class="suggestion" id="suggestion">
+                            {{!-- <ul>
+                                <li>Webdesigning</li>
+                                <li>Webdesigning</li>
+                               
+                            </ul> --}}
+                        </div>
+                        </div>
+                       
                         <!--Here distic list creation----->
-                        <datalist id="disticlist">
+                        {{!-- <datalist id="disticlist">
                             <option value="Thanjavur">Thanjavur</option>
                             <option value="Chennai">Chennai</option>
                             <option value="Thirichy">Thirichy</option>
                             <option value="Thiruvarur">Thiruvarur</option>
                             <option value="Nagapattinam">Nagapattinam</option>
                             <option value="Deni">Deni</option>
-                        </datalist>
+                        </datalist> --}}
 
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        
                       {{#if msg}}  <p id="error">{{msg}}</p> {{/if}}
                     </form>
                   
@@ -194,7 +205,7 @@
 
                 </div>
                 <div class="col-md-6 text-center">
-                    <img src="../images/hero-img.gif" class="img-fluid  about-img ml-5">
+                    <img src="../images/taj_palace_delhi.avif" class="img-fluid  about-img ml-5">
                     <div class="question">
 
                         <div class="list-parent">
@@ -381,8 +392,8 @@
                                 </div>
                                 <div class="location-details">
                                     <h6>LOCATION:</h6>
-                                    <p>234,Karandhai Road</p>
-                                    <p>Near Thanjai BigTemple,Thanjavur 616616</p>
+                                    <p>234,Old Bus Stand Road</p>
+                                    <p>Near Thanjai BigTemple,Thanjavur 613001</p>
                                 </div>
                             </div>
 
@@ -394,7 +405,7 @@
                                 </div>
                                 <div class="location-details">
                                     <h6>EMAIL:</h6>
-                                    <p>www.ramkrish98@gmail.com</p>
+                                    <p>venuemahal97@gmail.com</p>
 
                                 </div>
                             </div>
@@ -445,10 +456,12 @@
 
 <footer id="footer">
     <div class="container text-center">
-        <h4>JOIN OUR NEWSLETTER</h4> 
+        <h4 style="padding: 16px;">JOIN OUR NEWSLETTER</h4> 
         <p>Get our updates, feature and much more on your inbox</p>
         <input type="text"> <span>
-        <button>Subscribe</button></span>
+        <button onclick="window.alert(`
+        Thanks for subscribe !!!.
+        Get our updates, feature and much more on your inbox`)">Subscribe</button></span>
     </div>
 
     <div class="container foot-content">
@@ -456,11 +469,11 @@
             <div class="col-md-3 p-2">
               <h4>VENUE MAHAL</h4>
               <p>
-                234,Karandhai Road
-                Near Thanjai BigTemple,Thanjavur 616616
+                234,Old Bus Stand Road
+                Near Thanjai BigTemple,Thanjavur 613001
                 </p>
                 <p>Phone:+91 6380185040</p>
-                <p>Email:venuemahal635@gmail.com</p>
+                <p>Email:venuemahal97@gmail.com</p>
             </div>
 
 
@@ -478,16 +491,16 @@
                <h5>FAST MOVING ZONE</h5>
                <p>Marriage hall in Bangalore</p>
                <p>   Marriage hall in kerala</p>
-               <p>  Marriage hall in Visa</p>
+               <p>  Marriage hall in Vizag</p>
             </div>
             <div class="col-md-3 mt-5 p-2">
               <h5>OUR SOCIAL NETWORKS</h5>
               <p>watch out us on social media and if you wish support us!</p>
               <div class="social-icon">
-                <i class="fa-brands fa-twitter" id="social-icon"></i>
-                <i class="fa-brands fa-facebook" id="social-icon"></i>
-                <i class="fa-brands fa-square-instagram" id="social-icon"></i>
-                <i class="fa-brands fa-whatsapp" id="social-icon"></i>
+              <a href="https://x.com/prakashe599?t=juNryXn3pmLvrAfG2Fwkcg&s=03" style="text-decoration: none;">  <i class="fa-brands fa-twitter" id="social-icon"></i></a>
+               <a href="https://www.facebook.com/prakash.e.148?mibextid=ZbWKwL" style="text-decoration: none;">  <i class="fa-brands fa-facebook" id="social-icon"></i></a>
+               <a href="https://www.instagram.com/yuva_ram97/?utm_source=qr&igsh=MXZlejZ6bThsZWJ3dA%3D%3D" style="text-decoration: none;" >  <i class="fa-brands fa-square-instagram" id="social-icon"></i></a>
+                <a href=" https://wa.me/qr/FIUZRSR4RKMIA1" style="text-decoration: none;"> <i class="fa-brands fa-whatsapp" id="social-icon"></i></a>
               </div>
             </div>
         </div>
