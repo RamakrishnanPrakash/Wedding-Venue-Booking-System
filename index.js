@@ -11,9 +11,11 @@ const port=process.env.PORT;
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended:false}));
 app.set('view engine','hbs');
+hbs.registerPartials(path.join(__dirname,'./views/partials'));
 app.use('/',require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));
 app.use('auth',require('./routes/auth'));
+app.use('/api',require('./routes/api'));
 
 
 app.listen(port,(error)=>{
