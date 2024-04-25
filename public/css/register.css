@@ -169,13 +169,18 @@ nav{
     justify-content: center;
     position: relative;
     height: 470px;
+   
 }
 .Box{
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
+    background-color: #ffffff1c;
+    border-radius: 10px;
+    padding: 10px 0;
+    padding-top: 20px;
+    box-shadow: 2px 2px 30px #ffffff1a;
 }
 @keyframes box {
     from{
@@ -207,7 +212,7 @@ nav{
 }
 #log-icons{
     padding: 4px 4px;
-    color: #18f85f;
+    color: #fdfbfc;
     height: 30px;
     width: 30px;
     text-align: center;
@@ -262,9 +267,10 @@ nav{
 }
 .error p{
     margin: 10px;
-    color: white;
+    color: #ff8800;
     font-weight: 900;
     text-align: center;
+    letter-spacing: 1px;
 }
 #lo{
     margin-top: 1rem;

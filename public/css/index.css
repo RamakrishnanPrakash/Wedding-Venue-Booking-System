@@ -57,8 +57,8 @@ section {
 
 #home {
     height: 55vh;
-    background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(200,79,202,1) 50%, rgba(233,73,159,1) 100%);
+    /* background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(200,79,202,1) 50%, rgba(233,73,159,1) 100%); */
     position: relative;
     animation: home 1s;
 }
@@ -100,6 +100,8 @@ section {
     padding: 5px 15px;
     cursor: pointer;
     margin: 15px 0;
+    color: black;
+    font-weight: 500;
 }
 
 #search input::placehol
@@ -584,9 +586,10 @@ der {
 }
 .qlist{
     background-color: #fff;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.324);
     padding: 10px 20px;
     opacity: .8;
-    display: none;
+   display: none;
 }
 
 /*Contact Section*/
@@ -738,4 +741,57 @@ footer{
    padding: 2.5rem;
    text-align: center;
    opacity: .8;
+}
+.input-container{
+    position: relative;
+     width: 400px;
+     height: 50px;
+     border-top-left-radius: 3px;
+     border-top-right-radius: 3px;
+    background-color: #fff;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.input-container button{
+    background-color: transparent;
+    color: #ff006a;
+    font-size: 20px;
+}
+.suggestion{
+    width: 100%;
+    /* width: 100%; */
+    position: absolute;
+    background-color: #fff;
+    top: 50px;
+    left: 0;
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top: 1px solid #888;
+}
+.suggestion li{
+    padding: 7px 2px;
+    display: block;
+    text-align: left;
+    font-weight: 560;
+}
+.suggestion li:hover{
+    background-color: #888;
+    color: #fff;
+
+}
+::-webkit-scrollbar{
+    width: 8px;
+    height: 30px;
+}
+::-webkit-scrollbar-track{
+background-color: #fff;
+}
+::-webkit-scrollbar-thumb{
+background-color: #000;
+border-radius: 8px;
 }

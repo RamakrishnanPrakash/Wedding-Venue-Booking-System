@@ -11,6 +11,9 @@
 datalist{
     color: #db4bb1 !important;
 }
+body{
+    position: relative;
+}
 
 /*------Navabar-------*/
 #navbar {
@@ -18,7 +21,7 @@ datalist{
     top: 0;
     left: 0;
     z-index: 100;
-    background: rgb(131,58,180);
+    background: #833ab4;
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(200,79,202,1) 50%, rgba(233,73,159,1) 100%);
     height: 60px;
 }
@@ -45,7 +48,8 @@ datalist{
     color: white !important;
     font-size: 17px;
     font-weight: 200;
-    border-radius: 30px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 /*Venue Searching Section*/
@@ -129,9 +133,14 @@ datalist{
     color: #fff;
     padding: 2px 7px;
 }
+#info:hover{
+    opacity: .8;
+}
 .card a{
     margin-top: 3px;
+
 }
+
 .card:hover{
     border-left:2.5px solid #4ddbbf;
     border-top:2.5px solid #4ddbbf;;
@@ -234,7 +243,7 @@ datalist{
     color: #eb25a9;
     font-weight: 900;
 }
-#x-mark{
+#x-mark1{
     margin-left: 20px;
     font-size: 20px;
     color: #eb25a9;
@@ -371,4 +380,88 @@ footer{
    padding: 2.5rem;
    text-align: center;
    opacity: .8;
+}
+
+
+
+.logo{
+    position: relative;
+}
+.user-card{
+    min-width: 250px;
+    height: 300px;
+   background-color: #393c45;    /* #393c45 */
+    position: fixed;
+    /* bottom: -300px;
+    left:-20px; */
+    top: -1000px;
+    right: 140px;
+    /* z-index: 300; */
+    border-radius: 20px;
+    z-index: -1;
+}
+.user-card-active{
+    top: 60px;
+    right: 140px;  
+    transition: 1s ease-in-out;
+}
+#Symbol{
+    cursor: pointer;
+}
+.user-card .user-name{
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.user-name h4{
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+.user-name p{
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    cursor: pointer;
+    color: #eb25a9;
+}
+.user-content p{
+    padding: 2px 10px;
+}
+.user-image{
+
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 10px auto;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px #fff;
+}
+.user-image img{
+    width: 80px;
+    height: 80px;
+}
+
+.user-content{
+    text-align: center;
+    margin: 10px auto;
+    color: #fff;
+}
+#line{
+    font-size: 14px;
+}
+.user-content button{
+    outline: 0;
+    border: 0;
+    background-color: #1399d8;
+    color: #fff;
+    font-weight: 500;
+    padding: 7px 25px;
+    border-radius: 20px;
 }
