@@ -58,3 +58,32 @@ exports.mail=(username,email)=>{
       });
       return otp;
     }
+
+    exports.confireMail=(username,email,image)=>{
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'venuemahal97@gmail.com',
+          pass: 'caix tebp iciv svak'
+        }
+      });
+      var mailOptions = {
+        from: 'venuemahal@gmail.com',
+        to:email,
+        subject: 'Sending Email using Node.js',
+        html:`
+        <h3 style="text-align: center;">🏰 Venuemahal.com</h3>
+        <p style="margin: 10px 0;">Dear ${username}</p>
+        <img src="${image}" alt="" width="200" height="200" style="margin: 2px auto;">
+        <p style="margin: 10px 0;">Your booking was confiremd</p>
+        `
+    }
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        
+      }
+    });
+  }
