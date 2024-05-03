@@ -68,7 +68,7 @@ body{
     justify-content: center;
     position: relative;
 }
-span{
+.image-container span{
     position: absolute;
     top: 0;
     left: 0;
@@ -90,10 +90,13 @@ span{
     
     
 }
-.img{
+.image-container.img{
     width: 300px;
     height: 300px;
 
+}
+#city{
+    line-height: 20px;
 }
 .image-container img{
     width: 250px;
@@ -107,13 +110,13 @@ span{
     align-items: center;
     justify-content: center;
 }
-table{
+.detail-container table{
     text-align: left;
 }
-th{
+.detail-container table th{
     font-size: 20px;
 }
-th,td{
+.detail-container table th,td{
     padding: 2px 30px;
 }
 .confirm-message{

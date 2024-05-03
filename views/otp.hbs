@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venuemahal</title>
+    <link rel="icon" type="image/x-icon" href="/images/head1.jpg">
     <link rel="stylesheet" href="../css/otp.css">
 </head>
+
 <body>
     <div class="otp-parent otp-active">
 
-        
+
         <div class="otp-container">
             <p id="close"><i class="fa-solid fa-xmark"></i></p>
             <div class="mobile">
@@ -20,24 +23,29 @@
                 {{#if msg}} <p id="error3">{{msg}}</p> {{/if}}
             </div>
             <div class="otp-input">
-             <div class="input-container">
-                <form action="/auth/validOtp" class="input-form" method="post">
-               
-                <input type="text" class="input-box" id="input-box-1" name="no1" onkeyup='moveToNext(this,"input-box-2")' maxlength="1" autocomplete="off">
-                <input type="text" class="input-box" id="input-box-2" name="no2" onkeyup='moveToNext(this,"input-box-3")' maxlength="1" autocomplete="off">
-                <input type="text" class="input-box" id="input-box-3" name="no3" onkeyup='moveToNext(this,"input-box-4")' maxlength="1" autocomplete="off">
-                <input type="text" class="input-box" id="input-box-4" name="no4" maxlength="1" autocomplete="off">
-                
-                <button type="submit">Verfiy</button>
-                </form>
-                 
-                <p>didn't get otp <a href="/auth/otp" id="resend">Resend otp</a></p>
-             </div>
-             </div>
+                <div class="input-container">
+                    <form action="/auth/validOtp" class="input-form" method="post">
+
+                        <input type="text" class="input-box" id="input-box-1" name="no1"
+                            onkeyup='moveToNext(this,"input-box-2")' maxlength="1" autocomplete="off">
+                        <input type="text" class="input-box" id="input-box-2" name="no2"
+                            onkeyup='moveToNext(this,"input-box-3")' maxlength="1" autocomplete="off">
+                        <input type="text" class="input-box" id="input-box-3" name="no3"
+                            onkeyup='moveToNext(this,"input-box-4")' maxlength="1" autocomplete="off">
+                        <input type="text" class="input-box" id="input-box-4" name="no4" maxlength="1"
+                            autocomplete="off">
+
+                        <button type="submit">Verfiy</button>
+                    </form>
+
+                    <p>didn't get otp <a href="/auth/otp" id="resend">Resend otp</a></p>
+                </div>
+            </div>
         </div>
-        
+
     </div>
 
-<script src="../js/otp.js"></script>
+    <script src="../js/otp.js"></script>
 </body>
+
 </html>

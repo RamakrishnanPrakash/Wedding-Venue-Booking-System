@@ -5,87 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalyana Mandapam Book Mandapam</title>
+    <link rel="icon" type="image/x-icon" href="/images/head1.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/venue_search.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/addCard.css">
+    <link rel="stylesheet" href="../css/suggesh.css">
 </head>
 
 <body>
-    {{!-- {{> addCard }} addCard.css--}}
-    <div class="addcontainer">
-        <div class="add-container">
-            <div class="main">
-                <div class="title">
-                    <h3>🏰Venuemahal.com</h3>
-                </div>
-                <div class="logo">
-                    <ul>
-                        <li><i class="fa-solid fa-bag-shopping"></i> My Card</li>
-                        <li><i class="fa-regular fa-heart"></i></li>
-                        <li><i class="fa-regular fa-user"></i></li>
-                        <li id="x-mark"><i class="fa-brands fa-x-twitter"></i></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="scroll-bar" id="parent">
-                                {{!-- <div class="contents">
-                                    <table>
-                                        <tr>
-                                            <td><img src="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/997/573/new_medium/ss20230607-13853-4eas9z.jpg?1686168639"
-                                                    alt="no" width="100px" height="100px"></td>
-                                            <td id="par">
-                                                <h6>Kalyana mandapa name</h6>
-                                                <p>district</p>
-                                                <p>addess</p>
-                                                <p>8999-72903 people</p>
-                                            </td>
-                                            <td>
-                                                <h6>Booking Date</h6>
-                                                <p>2024-03-13</p>
-                                            </td>
-                                            <td>
-                                                <h6>Amount</h6>
-                                                <p>Rs.10000</p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div> --}}
-
-
-                            </div>
+    {{> addCard }}
 
 
 
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="card-container text-center" id="card-container">
-
-                                {{!-- <div class="image-card">
-                                    <img src="../images/taj_palace_delhi.avif" alt="">
-                                </div>
-                                <div class="card-details text-start">
-                                    <h6>Thiruna mandapama</h6>
-                                    <p>city</p>
-                                    <p>District</p>
-                                    <p>Amount: Rs.4000</p>
-                                    <button id="btn1">Pay</button>
-                                    <button id="btn2">Delete</button>
-                                </div> --}}
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
 
 
 
@@ -102,25 +34,31 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav  mx-auto">
+                <ul class="navbar-nav  mx-auto" id="na">
                     <li class="nav-item">
                         <a class="nav-link" href="/">HOME</a>
 
                     </li>
                     <li class="nav-item"></li>
                     <li class="nav-item">
-                        <form action="/auth/distic" class="search">
-                            <input type="text" id="search" placeholder="Enter your district" list="disticlist"
-                                name="distic"> <button type="submit"><i
-                                    class="fa-solid fa-magnifying-glass"></i></button>
-                            <datalist id="disticlist" style="height: 100px; width:500px">
-                                <option value="Thanjavur">Thanjavur</option>
-                                <option value="Chennai">Chennai</option>
-                                <option value="Pudukkottai">Pudhukkottai</option>
-                                <option value="Thirichy">Thirichy</option>
-                                <option value="Thiruvarur">Thiruvarur</option>
-                            </datalist>
-                        </form>
+                        <a class="nav-link">
+                            <form action="/auth/distic" class="search">
+
+                                {{> input}}
+
+                                {{!-- <input type="text" id="search" placeholder="Enter your district" list="disticlist"
+                                    name="distic"> <button type="submit"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                                <datalist id="disticlist" style="height: 100px; width:500px">
+                                    <option value="Thanjavur">Thanjavur</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Pudukkottai">Pudhukkottai</option>
+                                    <option value="Thirichy">Thirichy</option>
+                                    <option value="Thiruvarur">Thiruvarur</option>
+                                </datalist> --}}
+                            </form>
+                        </a>
+
                     </li>
 
                 </ul>
@@ -128,8 +66,8 @@
 
 
             <div class="logo">
-                {{#if logoname}}
-                <p id="Symbol">{{logoname}} </p>
+                {{#if logo}}
+                <p id="Symbol">{{logo}} </p>
 
 
 
@@ -159,9 +97,10 @@
 
             <a class="nav-link search"> <button id="filter-btn"><i class="fa-solid fa-filter"
                         id="filter-icon"></i></button></a>
-            {{#if logoname }}
-            <a class="nav-link" href="/auth/logout">Logout</a>
+            {{#if logo }}
+            <a class="nav-link" id="shopping"><i class="fa-solid fa-cart-shopping"></i></a>
             {{else}}
+            <h1>{{logo}}</h1>
             <a class="nav-link search" href="/login"> <button class="btn btn-outline-primary" type="button"
                     style="background: rgb(10, 232, 10);">LOGIN</button></a>
             <a class="nav-link search" href="/register"> <button class="btn btn-outline-success" type="button"
@@ -199,7 +138,7 @@
                         <input type="text" name="amount" placeholder="💰 Enter your budget">
                     </div>
                     <div class="input">
-                        <input type="text" name="city" placeholder="🏙️ Enter your distic">
+                        <input type="text" name="city" placeholder="🏙️ Enter your District">
                     </div>
                     <div class="input">
                         <input type="text" name="rating" placeholder="🏙️ Enter a rating 1-5">
@@ -316,7 +255,7 @@
         </div>
     </footer>
 
-
+    <script src="../js/suggesh.js"></script>
     <script src="../js/addCard.js"></script>
     <script src="../js/card.js"></script>
     <script src="../js/filtercard.js"></script>

@@ -4,7 +4,7 @@ const userController = require("../Controller/user");
 const middleWare = require("../Middleware/authentication");
 
 router.get("/distic", middleWare.userDetails, userController.distic);
-router.get("/filter", userController.filter);
+router.get("/filter", middleWare.userDetails, userController.filter);
 router.get(
   "/info",
   userController.isLoggedIn, //this middleware check user have been login and valid user

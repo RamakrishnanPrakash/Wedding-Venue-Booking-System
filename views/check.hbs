@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalyana Mandapam Book Mandapam</title>
+    <link rel="icon" type="image/x-icon" href="/images/head1.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/check.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/addCard.css">
+    <link rel="stylesheet" href="../css/log-msg.css">
 </head>
 
 <body class="body">
+
+    {{> addCard}}
 
     <div class="warning-card {{#if alerts}} {{alerts}} {{/if}}">
         <div class="warning-container">
@@ -69,15 +74,18 @@
                     </li>
                     <li class="nav-item">
                         <form action="/auth/distic" class="search">
-                            <input type="text" id="search" placeholder="Enter your distic" name="distic"
+                            <input type="text" id="search" placeholder="Enter your District" name="distic"
                                 list="disticlist"> <button type="submit"><i
                                     class="fa-solid fa-magnifying-glass"></i></button>
                             <datalist id="disticlist" style="height: 100px; width:500px">
                                 <option value="Thanjavur">Thanjavur</option>
                                 <option value="Chennai">Chennai</option>
-                                <option value="Pudukkottai">Pudhukkottai</option>
-                                <option value="Thirichy">Thirichy</option>
-                                <option value="Thiruvarur">Thiruvarur</option>
+                                <option value="Pudukottai">Pudukottai</option>
+                                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                                <option value="Ramanathapuram">Ramanathapuram</option>
+                                <option value="Coimbatore">Coimbatore</option>
+                                <option value="Nagapattinam">Nagapattinam</option>
+                                <option value="Mathura">Mathura</option>
                             </datalist>
                         </form>
                     </li>
@@ -114,7 +122,7 @@
 
             <a class="nav-link search"> <button id="filter-btn"><i class="fa-solid fa-filter"
                         id="filter-icon"></i></button></a>
-            {{#if logoname}} <a class="nav-link" href="/auth/logout">Logout</a>{{/if}}
+            {{#if logoname}} <a class="nav-link" id="shopping"><i class="fa-solid fa-cart-shopping"></i></a>{{/if}}
         </div>
     </nav>
 
@@ -143,7 +151,8 @@
                 </div>
                 <div class="col-md-7 col-lg-7 col">
 
-                    <form action="/auth/booking?mahal_id={{id}}" class="form-parent" id="form-parent" method="post">
+                    <form action="/auth/booking?mahal_id={{id}}" class="form-parent" id="form-parent" method="post"
+                        onsubmit="return handleSubmit({{id}})">
                         {{/each}}
                         <h1 style="margin-bottom: 10px;">🏰VenueMahal.com</h1>
                         {{#if message1}}
@@ -162,15 +171,23 @@
                             }
                         </script>
                         {{/if}}
+
+
+                        <h5 style="text-align: center;  margin-left:20px;" id="err">
+                        </h5>
+
                         <label for="name">👨🏾 Enter Username</label>
-                        <input type="text" name="name">
+                        <input type="text" name="name" id="username" required="Username is required">
+
                         <label for="phone_no">📱 Enter Phone no:</label>
-                        <input type="text" name="phone_no" id="phone_no">
+                        <input type="text" name="phone_no" id="phone_no" required="Phone no is required">
+
                         <label for="email">📧 Enter Email:</label>
-                        <input type="text" name="email">
+                        <input type="text" name="email" id="email1" required="Email is required">
                         <label for="Date:">🗓️ Date (Click the date button)</label>
-                        <input type="date" name="date" id="date" placeholder="click the date button">
-                        <button type="submit">Check Avalablity</button>
+                        <input type="date" name="date" id="date" placeholder="click the date button"
+                            required="Date is required">
+                        <button type="submit" onsubmit="validBooking(e,)">Check Avalablity</button>
 
 
 
@@ -183,6 +200,47 @@
 
     </section>
 
+    <div class="confirm">
+
+        <div class="confirm_message">
+            <div class="anime-container">
+                <div class="anime-img">
+                    <img src="../images/anime.png" alt="">
+                </div>
+                <div class="ms">
+                    <a id="close"><i class="fa-solid fa-x"></i></a>
+                    <h3>Upon confirming the availability
+                    </h3> <span id="ht">of this date,</span>
+                    <p>You may proceed by clicking the button below.
+                        If you wish to cancel, please click the designated cancel button to terminate the process. Click
+                        the book button to proceed with the booking process.
+                    </p>
+                    <h5> <button id="cancelBtn1">Cancel</button> <button id="book1">Book</button></h5>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="terminate">
+        <div class="confirm_message">
+            <div class="anime-container">
+                <div class="anime-img">
+                    <img src="../images/anime3.png" alt="">
+                </div>
+                <div class="ms">
+                    <a id="close"><i class="fa-solid fa-x"></i></a>
+                    <h3>Unfortunately,
+                    </h3> <span id="ht">the selected booking date is not available.</span>
+                    <p>Please try another date or choose a different venue.
+                    </p>
+                    <h5> <button id="cancelBtn2" style="padding: 5px 20px;">close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <section id="venue_information">
         <div class="container">
             <div class="row">
@@ -288,7 +346,7 @@
                         <input type="text" name="amount" placeholder="💰 Enter your budget">
                     </div>
                     <div class="input">
-                        <input type="text" name="city" placeholder="🏙️ Enter your distic">
+                        <input type="text" name="city" placeholder="🏙️ Enter your District">
                     </div>
                     <div class="input">
                         <input type="text" name="rating" placeholder="🏙️ Enter a rating 1-5">
@@ -406,8 +464,10 @@
             </div>
         </div>
     </footer>
+    <script src="../js/addCard.js"></script>
     <script src="../js/card.js"></script>
     <script src="../js/filtercard.js"></script>
+    <script src="../js/formValitation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

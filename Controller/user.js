@@ -17,20 +17,20 @@ const connection = db.connection();
 connection.connect((error) => {
   if (error) {
     console.log(error);
-  } else if (!error) console.log("sDatabase was connected");
+  } else if (!error) console.log("Database was connected");
 });
 //Here the router loading the venue card from venue_search.hbs
 exports.distic = (req, res) => {
   try {
     // if(!req.cookies.account){
     //    res.render('login');
-    // }
-
+    // }s
+    let logoname = "";
     if (req.userData) {
       let user = req.userData;
       user = JSON.parse(user);
       // console.log(user[0]);          //this set of code client page logo name mainted
-      let logoname = user[0].uname; // Example:Ramakrishnan => "R" This name was mainted
+      logoname = user[0].uname; // Example:Ramakrishnan => "R" This name was mainted
       logoname = logoname[0];
       console.log(logoname);
     }
@@ -49,12 +49,15 @@ exports.distic = (req, res) => {
             msg: "Distic not found or Choose the correct distic 🙃",
           });
         }
-        if (result.length != 0)
+        if (result.length != 0) {
+          const pr = { logoname: logoname };
+          console.log(pr);
           res.render("venue_search", {
             result: result,
             distic,
-            logoname: logoname,
+            logo: logoname,
           });
+        }
       }
     );
   } catch (error) {
@@ -66,6 +69,16 @@ exports.distic = (req, res) => {
 //Here the router loading the filter card from venue_search.hbs
 
 exports.filter = (req, res) => {
+  let logoname = "";
+
+  if (req.userData) {
+    let user = req.userData;
+    user = JSON.parse(user);
+    // console.log(user[0]);          //this set of code client page logo name mainted
+    logoname = user[0].uname; // Example:Ramakrishnan => "R" This name was mainted
+    logoname = logoname[0];
+    console.log(logoname);
+  }
   var amount = req.query.amount;
   var city = req.query.city;
   var ac = req.query.ac;
@@ -82,7 +95,7 @@ exports.filter = (req, res) => {
         var c = JSON.stringify(result);
         var mahal = JSON.parse(c);
 
-        res.render("venue_search", { result: result, logoname: logoname });
+        res.render("venue_search", { result: result, logo: logoname });
       }
     );
   }
@@ -96,7 +109,7 @@ exports.filter = (req, res) => {
         var c = JSON.stringify(result);
         var mahal = JSON.parse(c);
 
-        res.render("venue_search", { result: result, logoname: logoname });
+        res.render("venue_search", { result: result, logo: logoname });
       }
     );
   }
@@ -104,11 +117,12 @@ exports.filter = (req, res) => {
 //Here the info button clicking and routing for 'auth/info' .
 //i have render in check .hbs page in local host.
 exports.info = (req, res) => {
+  let logoname = "";
   if (req.userData) {
     let user = req.userData;
     user = JSON.parse(user);
     // console.log(user[0]);          //this set of code client page logo name mainted
-    let logoname = user[0].uname; // Example:Ramakrishnan => "R" This name was mainted
+    logoname = user[0].uname; // Example:Ramakrishnan => "R" This name was mainted
     logoname = logoname[0];
     console.log(logoname);
   }
@@ -408,9 +422,10 @@ exports.bookingMahal = async (req, res, next) => {
                   var reqDate = new Date(reqDateParse);
                   var newDate = new Date();
                   if (
-                    reqDate.getDate() < newDate.getDate() || //This block of code check the privious day was booking
-                    reqDate.getDay() < newDate.getDay() ||
-                    reqDate.getFullYear() < newDate.getFullYear()
+                    reqDate.getMonth() < newDate.getMonth() ||
+                    reqDate.getFullYear() < newDate.getFullYear() ||
+                    (reqDate.getMonth() == newDate.getMonth() &&
+                      reqDate.getDate() < newDate.getDate())
                   ) {
                     return res.render("check.hbs", {
                       result: result,
@@ -419,7 +434,6 @@ exports.bookingMahal = async (req, res, next) => {
                       logoname: logoname,
                     });
                   }
-
                   connection.query(
                     `
                           SELECT * FROM BOOKING WHERE MAHAL_ID=? AND BOOKING_DATE=?
@@ -544,31 +558,15 @@ exports.validOtp = (req, res) => {
     var mahalIdArray = [];
     var object1 = new Object();
     const { no1, no2, no3, no4 } = req.body;
-
     var num = no1 + no2 + no3 + no4;
-    // console.log(num);
-
-    if (!num || otp !== num) {
-      res.render("otp", { msg: "Invalid OTP" });
-    } else if (otp == num) {
-      // console.log(userData);
-      connection.query(
-        `INSERT INTO BOOKING VALUES(?,?,?,?,?,?)`,
-        [
-          userData[0].mahalId,
-          userData[0].date,
-          userData[0].userId,
-          userData[0].email,
-          userData[0].phoneNo,
-          userData[0].userName,
-        ],
-        (error, result) => {
-          if (error) {
-            console.error("Error:" + error);
-          }
-        }
+    function mail() {
+      Mailer.confireMail(
+        userData[0].userName,
+        userData[0].email,
+        result[0].mahalimage
       );
-
+    }
+    function display() {
       connection.query(
         `
      SELECT MAHAL.mahalname,MAHAL.distic,MAHAL.city,MAHAL.mahalimage,
@@ -582,7 +580,7 @@ exports.validOtp = (req, res) => {
           console.log(userData[0].userName, userData[0].email);
           connection.query(
             `
-            SELECT mahalimage FROM mahal WHERE id=?
+            SELECT * FROM mahal WHERE id=?
             `,
             [userData[0].mahalId],
             (err, result) => {
@@ -592,11 +590,17 @@ exports.validOtp = (req, res) => {
               console.log("I am Ramakrishnan");
               var s = result[0].mahalimage;
               // console.log(result[0].mahalimage);
-              Mailer.confireMail(
+              Mailer.confireMail([
                 userData[0].userName,
                 userData[0].email,
-                result[0].mahalimage
-              );
+                result[0].mahalimage,
+                result[0].city,
+                result[0].distic,
+                result[0].Ac,
+                result[0].budjet,
+                result[0].mahalname,
+                userData[0].date,
+              ]);
             }
           );
           console.log("Username is:", userData[0].userName);
@@ -604,7 +608,46 @@ exports.validOtp = (req, res) => {
           res.render("confirm", { result: result, mes: mes });
         }
       );
-    } //else-if block
+    }
+    // console.log(num);
+    connection.query(
+      `
+            SELECT * FROM BOOKING WHERE MAHAL_ID=? AND BOOKING_DATE=?
+          `,
+      [userData[0].mahalId, userData[0].date],
+      (error, result) => {
+        if (result.length > 0) {
+          display();
+        }
+        if (result.length <= 0) {
+          if (!num || otp !== num) {
+            res.render("otp", { msg: "Invalid OTP" });
+          } else if (otp == num) {
+            // console.log(userData);
+            connection.query(
+              `INSERT INTO BOOKING VALUES(?,?,?,?,?,?,?)`,
+              [
+                userData[0].mahalId,
+                userData[0].date,
+                userData[0].userId,
+                userData[0].email,
+                userData[0].phoneNo,
+                userData[0].userName,
+                userData[0].date,
+              ],
+              (error, result) => {
+                if (error) {
+                  console.error("Error:" + error);
+                }
+                if (!error) {
+                  display();
+                }
+              }
+            );
+          } //else-if block
+        }
+      }
+    );
   } catch (error) {
     //try-block
     console.log(error);
